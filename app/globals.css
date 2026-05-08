@@ -1,13 +1,487 @@
 @import "tailwindcss";
 
-*, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+/* Design tokens */
+:root {
+  --bg: #0b0d12;
+  --ivory: #f3ecdc;
+  --saffron: #ff8a3d;
+  --spice: #e23e57;
+  --cobalt: #5aa9ff;
+  --border: rgba(255, 255, 255, 0.06);
+  --border-subtle: rgba(255, 255, 255, 0.04);
+  --muted: #555;
+  --very-muted: #333;
+  --subtle: #3a3a3a;
+  --card-bg: #0d0f18;
+  --font-display: 'DM Serif Display', Georgia, serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
 }
 
+/* Base reset */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
 html {
-  background-color: #0b0d12;
-  color: #f3ecdc;
+  background: var(--bg);
+  color: var(--ivory);
+  font-family: var(--font-body);
+  font-size: 16px;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body { min-height: 100vh; }
+
+/* ======================== NAV ======================== */
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 48px;
+  height: 64px;
+  background: rgba(11, 13, 18, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-logo {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-style: italic;
+  color: var(--ivory);
+  text-decoration: none;
+  letter-spacing: -0.01em;
+  transition: opacity 0.2s;
+}
+.nav-logo:hover { opacity: 0.7; }
+
+.nav-links {
+  display: flex;
+  gap: 36px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--very-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--muted); }
+
+/* ======================== HERO ======================== */
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 96px 24px 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle radial glow */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -80px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 400px;
+  background: radial-gradient(ellipse at center, rgba(255, 138, 61, 0.04) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 28px;
+  padding: 5px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--very-muted);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.hero-badge-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--saffron);
+  opacity: 0.6;
+}
+
+.hero-headline {
+  font-family: var(--font-display);
+  font-size: clamp(42px, 6vw, 72px);
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  color: var(--ivory);
+  max-width: 720px;
+  margin-bottom: 20px;
+}
+
+.hero-headline em {
+  color: var(--saffron);
+  font-style: italic;
+}
+
+.hero-sub {
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.75;
+  color: var(--muted);
+  max-width: 380px;
+  margin-bottom: 36px;
+  letter-spacing: 0.01em;
+}
+
+.hero-cta {
+  display: inline-block;
+  background: var(--saffron);
+  color: var(--bg);
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  padding: 13px 30px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: opacity 0.2s, transform 0.15s;
+}
+.hero-cta:hover { opacity: 0.88; transform: translateY(-1px); }
+
+.hero-phones {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 64px;
+}
+
+.phone-mock {
+  border-radius: 14px;
+  background: #10131f;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  flex-shrink: 0;
+}
+
+/* ======================== FEATURES ======================== */
+.features {
+  padding: 80px 48px 96px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.features-header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.section-eyebrow {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--very-muted);
+  margin-bottom: 12px;
+}
+
+.features-title {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 3vw, 38px);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--ivory);
+  letter-spacing: -0.015em;
+}
+
+.feature-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.feature-row:last-child { margin-bottom: 0; }
+
+.feature-text {
+  padding: 48px 44px;
+  background: var(--card-bg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.feature-num {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.08);
+  margin-bottom: 16px;
+  font-variant-numeric: tabular-nums;
+}
+
+.feature-name {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-style: italic;
+  color: rgba(243, 236, 220, 0.8);
+  margin-bottom: 12px;
+  letter-spacing: -0.01em;
+}
+
+.feature-desc {
+  font-size: 13.5px;
+  font-weight: 300;
+  line-height: 1.8;
+  color: var(--muted);
+}
+
+.feature-visual {
+  background: #0b0d16;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+}
+
+/* ======================== MDX / LEGAL ======================== */
+.mdx-wrapper {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 64px 32px 96px;
+}
+
+.mdx-wrapper h1 {
+  font-family: var(--font-display);
+  font-size: 38px;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--ivory);
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+}
+
+.mdx-wrapper .doc-meta {
+  font-size: 12px;
+  color: var(--very-muted);
+  margin-bottom: 40px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--border);
+  line-height: 1.8;
+}
+
+.mdx-wrapper h2 {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-style: italic;
+  font-weight: 400;
+  color: rgba(243, 236, 220, 0.85);
+  margin: 40px 0 14px;
+  letter-spacing: -0.01em;
+}
+
+.mdx-wrapper h3 {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(243, 236, 220, 0.7);
+  margin: 28px 0 8px;
+}
+
+.mdx-wrapper p {
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.85;
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+
+.mdx-wrapper strong {
+  font-weight: 500;
+  color: rgba(243, 236, 220, 0.6);
+}
+
+.mdx-wrapper ul, .mdx-wrapper ol {
+  padding-left: 20px;
+  margin-bottom: 16px;
+}
+
+.mdx-wrapper li {
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.85;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+.mdx-wrapper a {
+  color: var(--saffron);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 138, 61, 0.3);
+  transition: border-color 0.2s;
+}
+.mdx-wrapper a:hover { border-color: var(--saffron); }
+
+.mdx-wrapper hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 36px 0;
+}
+
+.mdx-wrapper code {
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 12px;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: var(--saffron);
+}
+
+/* ======================== FOOTER ======================== */
+.site-footer {
+  border-top: 1px solid var(--border);
+  padding: 48px;
+  margin-top: 0;
+}
+
+.footer-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px;
+  margin-bottom: 20px;
+}
+
+.footer-links a {
+  font-size: 11px;
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  color: var(--very-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--muted); }
+
+.footer-copy {
+  font-size: 11px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.12);
+  line-height: 1.6;
+}
+
+/* ======================== DELETE ACCOUNT / SUPPORT ======================== */
+.page-wrapper {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 64px 32px 96px;
+}
+
+.page-wrapper h1 {
+  font-family: var(--font-display);
+  font-size: 36px;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--ivory);
+  letter-spacing: -0.02em;
+  margin-bottom: 32px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--border);
+}
+
+.page-wrapper h2 {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-style: italic;
+  font-weight: 400;
+  color: rgba(243, 236, 220, 0.8);
+  margin: 36px 0 12px;
+}
+
+.page-wrapper p {
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.85;
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+
+.page-wrapper ol, .page-wrapper ul {
+  padding-left: 20px;
+  margin-bottom: 14px;
+}
+
+.page-wrapper li {
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.85;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+.page-wrapper strong { font-weight: 500; color: rgba(243, 236, 220, 0.65); }
+.page-wrapper code {
+  font-family: monospace;
+  font-size: 12px;
+  background: rgba(255,255,255,0.06);
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: var(--saffron);
+}
+
+.page-wrapper a {
+  color: var(--saffron);
+  text-decoration: none;
+}
+
+.faq-item {
+  padding: 24px 0;
+  border-bottom: 1px solid var(--border);
+}
+.faq-item:first-of-type { border-top: 1px solid var(--border); }
+
+.faq-q {
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(243, 236, 220, 0.75);
+  margin-bottom: 8px;
+}
+
+.faq-a {
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 1.8;
+  color: var(--muted);
+}
+
+/* ======================== RESPONSIVE ======================== */
+@media (max-width: 768px) {
+  .site-nav { padding: 0 20px; }
+  .features { padding: 60px 20px; }
+  .feature-row { grid-template-columns: 1fr; }
+  .feature-visual { min-height: 120px; }
+  .hero { padding: 64px 20px 60px; }
+  .hero-phones { gap: 8px; }
+  .site-footer { padding: 36px 20px; }
 }
