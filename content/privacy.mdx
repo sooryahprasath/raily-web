@@ -1,0 +1,76 @@
+# Privacy Policy — Raily
+
+**Last updated:** 2026-05-08  
+**Effective:** 2026-05-08
+
+Raily ("we", "us", "the app") is operated by Sooryah Prasath, an individual developer based in India. This policy explains what information we collect, why, how we store it, and your rights.
+
+---
+
+## 1. Information we collect
+
+**a) Account information**  
+When you sign in with Google, we receive your email address and Google account ID. We do not request your name, profile photo, or any other Google profile field.
+
+**b) Travel data you provide**  
+When you save a journey, we store: PNR number, train number, train name, boarding station, alighting station, journey date, class, and computed distance.
+
+**c) Clipboard**  
+When the app is open, Raily reads the device clipboard only to detect IRCTC ticket SMS text. If detected, the PNR is extracted and the clipboard is cleared. Non-ticket clipboard content is ignored and never transmitted off-device.
+
+**d) Device data**  
+We do not collect device identifiers, advertising IDs, IP addresses for tracking, contacts, photos, calendar, microphone, camera, or location.
+
+## 2. Information we do not collect
+
+We do not collect: real name, phone number, address, payment information, biometric data, location, contacts, SMS content (we only check clipboard for IRCTC ticket strings), browsing history, or behavioural advertising signals.
+
+## 3. How we use information
+
+- To save and display your journey history
+- To compute your travel statistics and rank
+- To show your pseudonymous nickname on the leaderboard if you opt in
+- To authenticate you on subsequent app launches
+- To respond to support requests
+
+## 4. How information is stored
+
+All data is stored in Supabase (PostgreSQL) hosted in the ap-south-1 (Mumbai) region. Row-Level Security policies ensure each user can only read and write their own records. Database backups are retained for 7 days.
+
+## 5. Sharing with third parties
+
+We share data only with:
+- **Supabase** — database and authentication infrastructure
+- **Google** — Sign-In identity verification only
+- **RailRadar API** — we send only the train number you queried; no personal data is forwarded
+
+We do not sell, rent, or share your data with advertisers, data brokers, or analytics providers.
+
+## 6. Children
+
+Raily is intended for general audiences in India. We do not knowingly collect data from children under 13. If you believe we have, contact hello@raily.in for prompt deletion.
+
+## 7. Your rights
+
+You can:
+- View all your data inside the app (Profile, Stats, Safarnama).
+- Delete your account and all associated data at any time:
+  - **In-app:** Settings → Account → Delete Account
+  - **Web:** visit [raily.in/delete-account](https://raily.in/delete-account)
+- Email hello@raily.in with any other request.
+
+Account deletion removes your profile, journeys, statistics, leaderboard entry, and authentication record within 30 days of confirmation. Anonymous aggregate statistics may persist after deletion as they are not linked to any user.
+
+## 8. Security
+
+Connections use TLS 1.2 or higher. Authentication tokens are stored in Android Keystore via expo-secure-store. We do not store passwords; authentication is delegated to Google.
+
+## 9. Changes
+
+Material changes to this policy will be announced in-app and on raily.in at least 7 days before taking effect.
+
+## 10. Contact
+
+Sooryah Prasath  
+[hello@raily.in](mailto:hello@raily.in)  
+Bengaluru, India
