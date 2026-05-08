@@ -20,6 +20,7 @@ const dmSans = DM_Sans({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://raily.in'),
   title: 'Raily — Track your Indian Railways journey',
   description:
     'Indian Railways live train tracking, PNR status, and your personal travel passport. Free Android app.',
