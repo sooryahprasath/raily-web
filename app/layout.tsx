@@ -64,7 +64,7 @@ function Footer() {
           <a href="mailto:hello@raily.in">hello@raily.in</a>
         </div>
         <p className="footer-copy">
-          © {new Date().getFullYear()} Sooryah Prasath. Raily is not affiliated with Indian Railways or IRCTC.
+          © {new Date().getFullYear()} Raily. Not affiliated with Indian Railways or IRCTC.
         </p>
       </div>
     </footer>
