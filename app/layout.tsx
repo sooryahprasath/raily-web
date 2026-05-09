@@ -3,6 +3,10 @@ import './globals.css'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://raily.in'),
+  icons: {
+    icon: '/favicon.png',
+    apple: '/icon.png',
+  },
   title: 'Raily — Track your Indian Railways journey',
   description: 'Indian Railways live train tracking, PNR status, and your personal travel passport. Free Android app.',
   openGraph: {
@@ -40,7 +44,10 @@ function Nav() {
   return (
     <header>
       <nav className="site-nav">
-        <a href="/" className="nav-logo">Raily</a>
+        <a href="/" className="nav-logo">
+          <img src="/icon.png" alt="Raily" width={32} height={32} style={{ borderRadius: 8 }} />
+          <span>Raily</span>
+        </a>
         <ul className="nav-links">
           <li><a href="/#features">Features</a></li>
           <li><a href="/privacy">Privacy</a></li>
