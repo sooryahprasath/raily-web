@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-/* Design tokens */
+/* Design tokens — dark (Night Rail) */
 :root {
   --bg: #0b0d12;
   --ivory: #f3ecdc;
@@ -13,8 +13,40 @@
   --very-muted: #333;
   --subtle: #3a3a3a;
   --card-bg: #0d0f18;
-  --font-display: 'DM Serif Display', Georgia, serif;
-  --font-body: 'DM Sans', system-ui, sans-serif;
+  --nav-bg: rgba(11, 13, 18, 0.85);
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Geist', system-ui, sans-serif;
+  --font-mono: 'Geist Mono', monospace;
+  /* Map tokens — Night Rail */
+  --map-land: oklch(11% 0.025 240);
+  --map-water: oklch(8% 0.05 240);
+  --map-rail: oklch(65% 0.22 42);
+  --map-city: oklch(65% 0.22 42 / 18%);
+  --map-label: oklch(93% 0.010 80);
+  --map-grid: rgba(255, 255, 255, 0.04);
+}
+
+/* Light theme — Survey Paper */
+[data-theme="light"] {
+  --bg: #f5f0e8;
+  --ivory: #1e1a12;
+  --saffron: #c45a10;
+  --spice: #b52d44;
+  --cobalt: #1a6bcc;
+  --border: rgba(0, 0, 0, 0.08);
+  --border-subtle: rgba(0, 0, 0, 0.04);
+  --muted: #6b5e4a;
+  --very-muted: #8a7a68;
+  --subtle: #d4cdc0;
+  --card-bg: #ede8de;
+  --nav-bg: rgba(245, 240, 232, 0.90);
+  /* Map tokens — Survey Paper */
+  --map-land: oklch(91% 0.018 72);
+  --map-water: oklch(74% 0.045 215);
+  --map-rail: oklch(47% 0.22 35);
+  --map-city: oklch(47% 0.22 35 / 12%);
+  --map-label: oklch(18% 0.02 50);
+  --map-grid: oklch(82% 0.01 72 / 50%);
 }
 
 /* Base reset */
@@ -41,7 +73,7 @@ body { min-height: 100vh; }
   justify-content: space-between;
   padding: 0 48px;
   height: 64px;
-  background: rgba(11, 13, 18, 0.85);
+  background: var(--nav-bg);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border);
@@ -79,6 +111,23 @@ body { min-height: 100vh; }
   transition: color 0.2s;
 }
 .nav-links a:hover { color: var(--muted); }
+.nav-links a.nav-link-active { color: var(--ivory); }
+
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--very-muted);
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+  flex-shrink: 0;
+}
+.theme-toggle:hover { color: var(--muted); border-color: var(--subtle); }
 
 /* ======================== HERO ======================== */
 .hero {
@@ -351,7 +400,7 @@ body { min-height: 100vh; }
 }
 
 .mdx-wrapper code {
-  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-family: var(--font-mono);
   font-size: 12px;
   background: rgba(255, 255, 255, 0.06);
   padding: 2px 6px;
@@ -446,7 +495,7 @@ body { min-height: 100vh; }
 
 .page-wrapper strong { font-weight: 500; color: rgba(243, 236, 220, 0.65); }
 .page-wrapper code {
-  font-family: monospace;
+  font-family: var(--font-mono);
   font-size: 12px;
   background: rgba(255,255,255,0.06);
   padding: 2px 6px;
@@ -482,10 +531,12 @@ body { min-height: 100vh; }
 /* ======================== RESPONSIVE ======================== */
 @media (max-width: 768px) {
   .site-nav { padding: 0 20px; }
+  .nav-links { display: none; }
   .features { padding: 60px 20px; }
   .feature-row { grid-template-columns: 1fr; }
   .feature-visual { min-height: 120px; }
   .hero { padding: 64px 20px 60px; }
   .hero-phones { gap: 8px; }
   .site-footer { padding: 36px 20px; }
+  .footer-links { gap: 16px; }
 }
