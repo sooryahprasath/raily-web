@@ -1,7 +1,7 @@
 # Privacy Policy — Raily
 
-**Last updated:** 2026-05-08  
-**Effective:** 2026-05-08
+**Last updated:** 2026-05-16  
+**Effective:** 2026-05-16
 
 Raily ("we", "us", "the app") is operated by an independent developer based in India. This policy explains what information we collect, why, how we store it, and your rights.
 
@@ -16,7 +16,7 @@ When you sign in with Google, we receive your email address and Google account I
 When you save a journey, we store: PNR number, train number, train name, boarding station, alighting station, journey date, class, and computed distance.
 
 **c) Clipboard**  
-When the app is open, Raily reads the device clipboard only to detect IRCTC ticket SMS text. If detected, the PNR is extracted and the clipboard is cleared. Non-ticket clipboard content is ignored and never transmitted off-device.
+When the app is open, Raily reads the device clipboard only to detect IRCTC ticket SMS text matching a strict PNR pattern. If matched, the PNR is extracted and the matched clipboard text is cleared. Non-ticket clipboard content is ignored, never stored, and never transmitted off-device. This check runs locally on your device.
 
 **d) Device data**  
 We do not collect device identifiers, advertising IDs, IP addresses for tracking, contacts, photos, calendar, microphone, camera, or location.
@@ -40,9 +40,10 @@ All data is stored in Supabase (PostgreSQL) hosted in the ap-south-1 region in I
 ## 5. Sharing with third parties
 
 We share data only with:
-- **Supabase** — database and authentication infrastructure
+- **Supabase** — database and authentication infrastructure (PostgreSQL, hosted in ap-south-1, India)
 - **Google** — Sign-In identity verification only
-- **RailRadar API** — we send only the train number you queried; no personal data is forwarded
+- **IRCTC public APIs** — we send only the train number or PNR you queried; no name, email, or device identifier is forwarded
+- **RailRadar API** — we send only the train number you queried for schedule enrichment; no personal data is forwarded
 
 We do not sell, rent, or share your data with advertisers, data brokers, or analytics providers.
 
@@ -59,7 +60,7 @@ You can:
   - **Web:** visit [raily.in/delete-account](https://raily.in/delete-account)
 - Email hello@raily.in with any other request.
 
-Account deletion removes your profile, journeys, statistics, leaderboard entry, and authentication record within 30 days of confirmation. Anonymous aggregate statistics may persist after deletion as they are not linked to any user.
+In-app deletion is **immediate**: your profile, journeys, statistics, leaderboard entry, and authentication record are removed the moment you confirm. Email requests are processed within 30 days. Anonymous aggregate statistics may persist after deletion as they are not linked to any user.
 
 ## 8. Security
 
